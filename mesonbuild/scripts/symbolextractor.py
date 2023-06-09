@@ -245,7 +245,7 @@ def _get_implib_exports(impfilename: str) -> T.Tuple[T.List[str], str]:
         return lines[start:end], None
     all_stderr += e
     # Next, try llvm-nm.exe provided by LLVM, then nm.exe provided by MinGW
-    for nm in ('llvm-nm', 'nm'):
+    for nm in ('nm',):
         output, e = call_tool_nowarn(get_tool(nm) + ['--extern-only', '--defined-only',
                                                      '--format=posix', impfilename])
         if output:
